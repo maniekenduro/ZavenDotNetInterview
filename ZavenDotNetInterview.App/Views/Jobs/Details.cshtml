@@ -1,0 +1,66 @@
+﻿@model ZavenDotNetInterview.App.Models.Job
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+            @Html.DisplayName("Status")
+        </th>
+        <th>
+            @Html.DisplayName("Do After")
+        </th>
+        <th>
+            @Html.DisplayName("Last Updated At")
+        </th>
+        <th>
+            @Html.DisplayName("Created At")
+        </th>
+    </tr>   
+    <tr>
+        <td>
+            @Model.Name
+        </td>
+        <td>
+            @Model.Status
+        </td>
+        <td>
+            @Model.DoAfter
+        </td>
+        <td>
+            @Model.LastUpdatedAt
+        </td>
+        <td>
+            @Model.CreatedAt
+        </td>
+    </tr>
+
+</table>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Logs")
+        </th>
+        <th>
+            
+        </th>
+    </tr>
+    @foreach (var logs in Model.Logs)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => logs.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => logs.CreatedAt)
+        </td>   
+    </tr>
+    }
+</table>
