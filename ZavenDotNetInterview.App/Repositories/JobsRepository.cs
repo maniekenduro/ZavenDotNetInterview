@@ -28,7 +28,8 @@ namespace ZavenDotNetInterview.App.Repositories
 
         public Job GetJobDetails(Guid guid)
         {
-            return _ctx.Jobs.Where(x => x.Id == guid).Include(x => x.Logs.OrderBy(y => y.CreatedAt)).FirstOrDefault();
+            var css = _ctx.Jobs.Where(x => x.Id == guid).FirstOrDefault();
+            return css;
         }
 
         public Job CreateJob(string name, DateTime? doAfter)

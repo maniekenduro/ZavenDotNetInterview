@@ -22,7 +22,7 @@ namespace ZavenDotNetInterview.App.Services
             _logsRepository = logsRepository;
         }
 
-        public void ProcessJobs()
+        public async Task ProcessJobs()
         {
             IJobsRepository jobsRepository = new JobsRepository(_ctx, _logsRepository);
             var allJobs = jobsRepository.GetAllJobs();
@@ -30,7 +30,7 @@ namespace ZavenDotNetInterview.App.Services
 
             jobsToProcess.ForEach(job => job.ChangeStatus(JobStatus.InProgress));
                         
-            _ctx.SaveChangesAsync();
+            await _ctx.SaveChangesAsync();
 
             Parallel.ForEach(jobsToProcess, (currentjob) =>
             {
